@@ -1,0 +1,23 @@
+<%= form_tag '/search', method: :post do %>
+
+  <%= label_tag :city %>
+  <%= text_field_tag :city %><br>
+
+  <%= label_tag :state %>
+  <%= text_field_tag :state %><br>
+
+<%= submit_tag 'Submit' %>
+
+<% end %>
+
+<h1>5 Day Forecast</h1>
+<h2><%= @location['city'] %>,<%= @location['region'] %></h2>
+
+<% five_days = [@day[0], @day[1], @day[2], @day[3], @day[4]] %>
+<% five_days.each do |day| %>
+  <b><%= day['day'] %></b><br>
+  <%= day['date'] %><br>
+  High: <%= day['high'] %><br>
+  Low: <%= day['low'] %><br>
+  <%= day['text'] %><br><br>
+<% end %>
